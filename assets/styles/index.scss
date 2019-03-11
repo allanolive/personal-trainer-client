@@ -1,1 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+
+.input {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
