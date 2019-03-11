@@ -35,9 +35,19 @@ const onChangePassword = function (event) {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+
+const onSubmit = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data)
+  api.submit(data.weight, data.calories)
+    .then(ui.submitScuccess)
+    .catch(ui.submitScuccess)
+}
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onChangePassword
+  onChangePassword,
+  onSubmit
 }
