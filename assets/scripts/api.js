@@ -40,9 +40,26 @@ const signOut = function () {
   })
 }
 
+const submit = function (weight, calories) {
+  return $.ajax({
+    url: config.apiUrl + '/progresses',
+    method: 'POST',
+    data: {
+      'progress': {
+        'weight': `${weight}`,
+        'calories': `${calories}`
+      }
+    },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  submit
 }
