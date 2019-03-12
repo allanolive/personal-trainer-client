@@ -36,18 +36,27 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-const onSubmit = function (event) {
+const onSubmit = function () {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
-  api.submit(data.weight, data.calories)
-    .then(ui.submitScuccess)
-    .catch(ui.submitScuccess)
+  api.submit(data.weight, data.calories, data.protein, data.carbohydrate, data.fat, data.sugar, data.fiber, data.cardio)
+    .then(ui.submitSuccess)
+    .catch(ui.submitSuccess)
 }
+
+const onShowProgresses = function (event) {
+  event.preventDefault()
+  api.showProgresses()
+    .then(ui.showProgressesSuccess)
+    .catch(ui.showProgressesFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onChangePassword,
-  onSubmit
+  onSubmit,
+  onShowProgresses
 }
