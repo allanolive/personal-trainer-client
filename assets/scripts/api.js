@@ -40,16 +40,32 @@ const signOut = function () {
   })
 }
 
-const submit = function (weight, calories) {
+const submit = function (weight, calories, protein, carbohydrate, fat, sugar, fiber, cardio) {
   return $.ajax({
     url: config.apiUrl + '/progresses',
     method: 'POST',
     data: {
       'progress': {
         'weight': `${weight}`,
-        'calories': `${calories}`
+        'calories': `${calories}`,
+        'protein': `${protein}`,
+        'carbohydrate': `${carbohydrate}`,
+        'fat': `${fat}`,
+        'sugar': `${sugar}`,
+        'fiber': `${fiber}`,
+        'cardio': `${cardio}`
       }
     },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const showProgresses = function () {
+  return $.ajax({
+    url: config.apiUrl + '/progresses',
+    method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -61,5 +77,6 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  submit
+  submit,
+  showProgresses
 }
