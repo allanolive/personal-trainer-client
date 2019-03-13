@@ -72,11 +72,56 @@ const showProgresses = function () {
   })
 }
 
+const showProgress = function () {
+  return $.ajax({
+    url: config.apiUrl + '/users/' + store.user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteProgress = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/progresses/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateProgress = function (data, id, weight, calories, protein, carbohydrate, fat, sugar, fiber, cardio) {
+  return $.ajax({
+    url: config.apiUrl + '/progresses/' + id,
+    method: 'PATCH',
+    data: {
+      'progress': {
+        'weight': `${weight}`,
+        'calories': `${calories}`,
+        'protein': `${protein}`,
+        'carbohydrate': `${carbohydrate}`,
+        'fat': `${fat}`,
+        'sugar': `${sugar}`,
+        'fiber': `${fiber}`,
+        'cardio': `${cardio}`
+      }
+    },
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   submit,
-  showProgresses
+  showProgresses,
+  showProgress,
+  deleteProgress,
+  updateProgress
 }

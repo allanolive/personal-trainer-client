@@ -1,0 +1,49 @@
+{{#each progresses as |progress|}}
+  <!-- {{> partial}} -->
+  <!-- Don't uncomment yet -->
+
+  <!-- <section class="progress mb-3" data-id="{{progress.id}}">
+
+      <p class="chill">Weight:&nbsp{{progress.weight}}</p>
+      <p class="chill">&nbsp&nbsp&nbsp&nbspCalories:</p> {{progress.calories}}
+      <p class="chill">&nbsp&nbsp&nbsp&nbspProtein:</p> {{progress.protein}}
+      <p class="chill">&nbsp&nbsp&nbsp&nbspCarbohydrate:</p> {{progress.carbohydrate}}
+      <p class="chill">&nbsp&nbsp&nbsp&nbspFat:</p> {{progress.fat}}
+      <p class="chill">&nbsp&nbsp&nbsp&nbspSugar:</p> {{progress.sugar}}
+      <p class="chill">&nbsp&nbsp&nbsp&nbspFiber:</p> {{Cardio.fiber}}
+      <p class="chill">&nbsp&nbsp&nbsp&nbspCardio:</p> {{progress.cardio}}
+
+  </section> -->
+
+
+  <section class="progress mb-3 d-flex justify-content-between" >
+      <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE THIS SHIT</button>
+
+      <p class="chill col-1.25">Weight:{{progress.weight}}</p>
+      <p class="chill col-1.25">Calories:{{progress.calories}}</p>
+      <p class="chill col-1.25">Protein:{{progress.protein}}</p>
+      <p class="chill col-1.25">Carbohydrate:{{progress.carbohydrate}}</p>
+      <p class="chill col-1.25">Fat:{{progress.fat}}</p>
+      <p class="chill col-1.25">Sugar:{{progress.sugar}}</p>
+      <p class="chill col-1.25">Fiber:{{Cardio.fiber}}</p>
+      <p class="chill col-1.25">Cardio:{{progress.cardio}}</p>
+
+      <form id="update-progress" data-id="{{progress.id}}" class="progress-update">
+        <input type="number" placeholder="weight"name="progress[weight]" value="{{progress.weight}}">
+        <input type="number" placeholder="calories"name="progress[calories]" value="{{progress.calories}}">
+        <input type="number" placeholder="protein"name="progress[protein]" value="{{progress.protein}}">
+        <input type="number" placeholder="carbohydrate"name="progress[carbohydrate]" value="{{progress.carbohydrate}}">
+        <input type="number" placeholder="fat"name="progress[fat]" value="{{progress.fat}}">
+        <input type="number" placeholder="sugar"name="progress[sugar]" value="{{progress.sugar}}">
+        <input type="number" placeholder="fiber"name="progress[fiber]" value="{{progress.fiber}}">
+        <input type="number" placeholder="cardio"name="progress[cardio]" value="{{progress.cardio}}">
+        <input class="update-button" type="submit" data-id="{{progress.id}}" name="update-button" value="UPDATE THIS SHIT">
+      </form>
+
+      <!-- <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE THIS SHIT</button> -->
+
+
+  </section>
+
+
+{{/each}}

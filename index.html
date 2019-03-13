@@ -12,37 +12,51 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
-            <p id="messages"></p>
-            <form id="sign-up">
+      <div class="nav-bar">
+        ALLAN
+      </div>
+<div class="main-body container col-5">
+        <div class="container col align-self-left">
+        </div>
+        <main class="main-section container align-self-center">
+          <p class="messages" id="messages"></p>
+          <form id="sign-up">
+          <input name="credentials[email]" type="email" placeholder="email">
+          <input name="credentials[password]" required type="password" placeholder="Password">
+          <input name="credentials[password_confirmation]" required type="password" placeholder="Confirm Password">
+          <input type="submit" value="Sign up!">
+        </form>
+        <form id="sign-in">
             <input name="credentials[email]" type="email" placeholder="email">
-            <input name="credentials[password]" required type="password" placeholder="Password">
-            <input name="credentials[password_confirmation]" required type="password" placeholder="Confirm Password">
-            <input type="submit" value="Sign up!">
-          </form>
-          <form id="sign-in">
-              <input name="credentials[email]" type="email" placeholder="email">
-              <input name="credentials[password]" type="password" placeholder="Password">
-              <input type="submit" value="Sign In!">
-          </form>
-          <form id="change-password">
-            <input name="passwords[old]" type="password" placeholder="Old Password">
-            <input name="passwords[new]" type="password" placeholder="New Password">
-            <input type="submit" value="Change Password!">
-          </form>
-          <button id="sign-out">Sign Out</button>
-          <form id="input" class="input">
-            <p>Weight</p><input name="weight" type="number">
-            <p>Calories</p><input name="calories" type="number">
-            <p>Protein</p><input name="protein" type="number">
-            <p>Carbohydrate</p><input name="carbohydrate" type="number">
-            <p>Fat</p><input name="fat" type="number">
-            <p>Sugar</p><input name="sugar" type="number">
-            <p>Fiber</p><input name="fiber" type="number">
-            <p>Cardio</p><input name="cardio" type="number">
-            <input type="submit" value="Submit!">
-          </form>
-          <button id="show-progress">Show Progress</button>
-          <button id="show-progresses">Show Progresses</button>
+            <input name="credentials[password]" type="password" placeholder="Password">
+            <input type="submit" value="Sign In!">
+        </form>
+        <form id="change-password">
+          <input name="passwords[old]" type="password" placeholder="Old Password">
+          <input name="passwords[new]" type="password" placeholder="New Password">
+          <input type="submit" value="Change Password!">
+        </form>
+        <button id="sign-out">Sign Out</button>
+        <form id="input" class="input">
+          <p>Weight</p><input name="weight" type="number">
+          <p>Calories</p><input name="calories" type="number">
+          <p>Protein</p><input name="protein" type="number">
+          <p>Carbohydrate</p><input name="carbohydrate" type="number">
+          <p>Fat</p><input name="fat" type="number">
+          <p>Sugar</p><input name="sugar" type="number">
+          <p>Fiber</p><input name="fiber" type="number">
+          <p>Cardio</p><input name="cardio" type="number">
+          <input type="submit" value="Submit!">
+        </form>
+        <button id="show-progress">Show Progress</button>
+        <button id="show-progresses">Show Progresses</button>
+        <!-- <main> -->
+          <div id="content-progress" class="container">
+          </div>
+        <!-- </main> -->
+      </main>
+  </div>
+      <div class="top-nav container col align-self-right">
+      </div>
     </body>
 </html>

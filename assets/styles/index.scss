@@ -1,7 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-image: url('../public/background.jpg');
+  background-size: cover;
+}
+
+.main-body {
+  display: flex;
+  height: 100vh;
+}
+
+form > p {
+}
+
+.nav-bar {
+  height: 120px;
+  background: #2F4F4F;
+  display: inline;
+  font-size: 100px;
+  display: inline;
+}
+
+.messages {
+  height: 40px;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.main-section {
+  justify-content: center;
+  align-items: center;
+  background-color: #454a4f;
+}
+
 .input {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 10vw;
+  color: white;
+  font-size: 16px;
+  background-color: blue;
+}
+
+.progress {
+  height: 50px;
+  background-color: blue;
+  font-size: 7px;
+  color: white;
+  font-weight: 700;
+  padding: 5px;
+}
+
+.chill {
+  // padding: 5px;
 }
