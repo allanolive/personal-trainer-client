@@ -3,7 +3,29 @@
 const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
-// const store = require('./store')
+const store = require('./store')
+
+const changeBackground = function () {
+  const images = [
+    'images/001.jpg',
+    'images/002.jpg',
+    'images/003.jpg',
+    'images/004.jpg'
+  ]
+
+  const randomNumber = Math.floor(Math.random() * images.length)
+  const bgImg = 'url("../public/' + images[randomNumber] + '")'
+
+  $('body').css({ 'background': bgImg, 'backgroundSize': 'cover' })
+}
+
+const showDate = function () {
+  const n = new Date()
+  const y = n.getFullYear()
+  const m = n.getMonth() + 1
+  const d = n.getDate()
+  $('#btnDate').html(m + '/' + d + '/' + y)
+}
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -40,18 +62,18 @@ const onChangePassword = function (event) {
 const onSubmit = function () {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(event.target)
-  api.submit(data.weight, data.calories, data.protein, data.carbohydrate, data.fat, data.sugar, data.fiber, data.cardio)
+  console.log(store)
+  api.submit(data.progress.weight, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
     .then(ui.submitSuccess)
     .catch(ui.submitSuccess)
 }
 
-const onShowProgresses = function (event) {
-  event.preventDefault()
-  api.showProgresses()
-    .then(ui.showProgressesSuccess)
-    .catch(ui.showProgressesFailure)
-}
+// const onShowProgresses = function (event) {
+//   event.preventDefault()
+//   api.showProgresses()
+//     .then(ui.showProgressesSuccess)
+//     .catch(ui.showProgressesFailure)
+// }
 
 const onShowProgress = function (event) {
   event.preventDefault()
@@ -84,8 +106,10 @@ module.exports = {
   onSignOut,
   onChangePassword,
   onSubmit,
-  onShowProgresses,
+  // onShowProgresses,
   onShowProgress,
   onDeleteProgress,
-  onUpdateProgress
+  onUpdateProgress,
+  changeBackground,
+  showDate
 }

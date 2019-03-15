@@ -1,62 +1,218 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <div class="nav-bar">
-        ALLAN
-      </div>
-<div class="main-body container col-5">
-        <div class="container col align-self-left">
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <!-- Nav Bar -->
+  <nav class="nav bg-dark" style="height: 50px; background-color: white; position: relative;">
+    <button type="button" id="sign-up" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal" data-whatever="@mdo" style="margin: 7px; WIDTH: 180px; background-color: rgba(61, 40, 40, 0.6); border: none;">SIGN UP</button>
+    <button type="button" id="sign-in" class="btn btn-primary" data-toggle="modal" data-target="#signInModal" data-whatever="@fat" style="margin: 7px; WIDTH: 180px; background-color: rgba(61, 40, 40, 0.6); border: none;">SIGN IN</button>
+    <button type="button" id="sign-out" class="btn btn-primary" data-toggle="modal" data-target="#signOutModal" data-whatever="@mdo" style="margin: 7px; WIDTH: 180px; background-color: rgba(61, 40, 40, 0.6); border: none;">SIGN OUT</button>
+    <button type="button" id="change-password" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal" data-whatever="@fat" style="margin: 7px; WIDTH: 180px; background-color: rgba(61, 40, 40, 0.6); border: none;">CHANGE
+      PASSWORD</button>
+    <div id="navMessages" style="position: absolute; right: 15px; margin-top: 10px; font-size: 20px; color: white;"></div>
+  </nav>
+  <!-- Sign Up Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="margin-top: 50px; background-color: rgba(61, 40, 40, 0.8)">
+        <div class="modal-header" style="color: white;">
+          <h3 class="modal-title" id="exampleModalLabel">SIGN UP</h3>
+          <div id="modalMessages" style="position: relative; left: 25px; font-size: 20px; color: red;"></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="font-size: 30px; color: white;">&times;</span>
+          </button>
         </div>
-        <main class="main-section container align-self-center">
-          <p class="messages" id="messages"></p>
-          <form id="sign-up">
-          <input name="credentials[email]" type="email" placeholder="email">
-          <input name="credentials[password]" required type="password" placeholder="Password">
-          <input name="credentials[password_confirmation]" required type="password" placeholder="Confirm Password">
-          <input type="submit" value="Sign up!">
-        </form>
-        <form id="sign-in">
-            <input name="credentials[email]" type="email" placeholder="email">
-            <input name="credentials[password]" type="password" placeholder="Password">
-            <input type="submit" value="Sign In!">
-        </form>
-        <form id="change-password">
-          <input name="passwords[old]" type="password" placeholder="Old Password">
-          <input name="passwords[new]" type="password" placeholder="New Password">
-          <input type="submit" value="Change Password!">
-        </form>
-        <button id="sign-out">Sign Out</button>
-        <form id="input" class="input">
-          <p>Weight</p><input name="weight" type="number">
-          <p>Calories</p><input name="calories" type="number">
-          <p>Protein</p><input name="protein" type="number">
-          <p>Carbohydrate</p><input name="carbohydrate" type="number">
-          <p>Fat</p><input name="fat" type="number">
-          <p>Sugar</p><input name="sugar" type="number">
-          <p>Fiber</p><input name="fiber" type="number">
-          <p>Cardio</p><input name="cardio" type="number">
-          <input type="submit" value="Submit!">
-        </form>
-        <button id="show-progress">Show Progress</button>
-        <button id="show-progresses">Show Progresses</button>
-        <!-- <main> -->
-          <div id="content-progress" class="container">
-          </div>
-        <!-- </main> -->
-      </main>
-  </div>
-      <div class="top-nav container col align-self-right">
+        <div class="modal-body">
+          <form id="btn-sign-up">
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">Email</label>
+              <div class="col-sm-7">
+                <input name="credentials[email]" type="email" class="form-control" id="inputEmailSignUp" style="width: 260px;">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">Password</label>
+              <div class="col-sm-7">
+                <input name="credentials[password]" type="password" class="form-control" id="inputPasswordsignUp" style="width: 260px;">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">Confirm Password</label>
+              <div class="col-sm-7">
+                <input name="credentials[password_confirmation]" type="password" class="form-control" id="confirmPasswordSignUp" style="width: 260px;">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: rgba(61, 40, 40, 0.6); border-color: white; position: relative; left: 380px;">Sign Up</button>
+          </form>
+        </div>
       </div>
-    </body>
+    </div>
+  </div>
+  <!-- Sign In Modal -->
+  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="margin-top: 50px; background-color: rgba(61, 40, 40, 0.8)">
+        <div class="modal-header" style="color: white;">
+          <h3 class="modal-title" id="exampleModalLabel">SIGN IN</h3>
+          <div id="modalMessages" style="position: relative; left: 25px; font-size: 20px; color: red;"></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="font-size: 30px; color: white;">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="btn-sign-in">
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">Email</label>
+              <div class="col-sm-7">
+                <input name="credentials[email]" type="email" class="form-control" id="inputEmailSignIn" style="width: 260px;">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">Password</label>
+              <div class="col-sm-7">
+                <input name="credentials[password]" type="password" class="form-control" id="inputPasswordSignIn" style="width: 260px;">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: rgba(61, 40, 40, 0.6); border-color: white; position: relative; left: 386px;">Sign IN</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Change Password Modal -->
+  <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="margin-top: 50px; background-color: rgba(61, 40, 40, 0.8)">
+        <div class="modal-header" style="color: white;">
+          <h3 class="modal-title" id="exampleModalLabel">CHANGE PASSWORD</h3>
+          <div id="modalMessages" style="position: relative; left: 25px; font-size: 20px; color: red;"></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="font-size: 30px; color: white;">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="btn-change-password">
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">Old Password</label>
+              <div class="col-sm-7">
+                <input name="passwords[old]" type="password" class="form-control" id="inputPasswordChangePassword" style="width: 260px;">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-5 col-form-label" style="color: white; font-size: 20px">New Password</label>
+              <div class="col-sm-7">
+                <input name="passwords[new]" type="password" class="form-control" id="inputConfirmPasswordChangePassword" style="width: 260px;">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: rgba(61, 40, 40, 0.6); border-color: white;  position: relative; left: 280px;">CHANGE PASSWORD</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-body" class="main-body justify-content-center">
+
+    <div id="content-progress" class="" style=""></div>
+
+    <div id="contentContainer" class="content-container" style="background-color: rgba(61, 40, 40, 0.5)">
+      <div style="display: flex; justify-content: center;">
+        <div id="btnLefArrow" style="font-size: 28px; color: white; padding-right: 75px;">&#8592;</div>
+        <div id="btnDate" style="font-size: 28px; color: white; width: 150px; text-align: center;">DATE</div>
+        <div id="btnRightArrow" style="font-size: 28px; color: white; padding-left: 75px;">&#8594;</div>
+      </div>
+
+
+
+      <p class="messages" id="messages"></p>
+
+
+      <form id="input" class="input text-center d-flex justify-content-center">
+
+        <div class="d-flex flex-column flex-start">
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="weight" style="width: 100px;">Weight</span>
+            </div>
+            <input name="progress[weight]" type="number" class="form-control">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="calories" style="width: 100px;">Calories</span>
+            </div>
+            <input name="progress[calories]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="cardio" style="width: 100px;">Cardio</span>
+            </div>
+            <input name="progress[cardio]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="protein" style="width: 100px;">Protein</span>
+            </div>
+            <input name="progress[protein]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="carbs" style="width: 100px;">Carbs</span>
+            </div>
+            <input name="progress[carbs]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="fat" style="width: 100px;">Fat</span>
+            </div>
+            <input name="progress[fat]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="sugar" style="width: 100px;">Sugar</span>
+            </div>
+            <input name="progress[sugar]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="fiber" style="width: 100px;">Fiber</span>
+            </div>
+            <input name="progress[fiber]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+
+          <input type="submit" value="Submit!">
+
+        </div>
+
+      </form>
+
+      <button id="show-progress" style="margin-top: 15px;">Show Progress</button>
+      <!-- <button id="show-progresses" style="margin-top: 15px;">Show Progresses</button> -->
+
+
+
+    </div>
+  </div>
+
+</body>
+
 </html>

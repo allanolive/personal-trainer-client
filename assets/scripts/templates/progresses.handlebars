@@ -15,20 +15,46 @@
 
   </section> -->
 
+  <div style="display: flex; justify-content: center; margin: 15px;">
+    <div id="btnLefArrow" style="font-size: 28px; color: white; padding-right: 75px;">&#8592;</div>
+    <div id="btnDate" style="font-size: 28px; color: white; width: 150px; text-align: center;">DATE</div>
+    <div id="btnRightArrow" style="font-size: 28px; color: white; padding-left: 75px;">&#8594;</div>
+  </div>
 
-  <section class="progress mb-3 d-flex justify-content-between" >
-      <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE THIS SHIT</button>
+  <section class="progress" data-id="{{progress.id}}" style="display: flex; justify-content: center; width: 498px; height: 500px; background-color: rgba(61, 40, 40, 0.5)">
 
-      <p class="chill col-1.25">Weight:{{progress.weight}}</p>
-      <p class="chill col-1.25">Calories:{{progress.calories}}</p>
-      <p class="chill col-1.25">Protein:{{progress.protein}}</p>
-      <p class="chill col-1.25">Carbohydrate:{{progress.carbohydrate}}</p>
-      <p class="chill col-1.25">Fat:{{progress.fat}}</p>
-      <p class="chill col-1.25">Sugar:{{progress.sugar}}</p>
-      <p class="chill col-1.25">Fiber:{{Cardio.fiber}}</p>
-      <p class="chill col-1.25">Cardio:{{progress.cardio}}</p>
 
-      <form id="update-progress" data-id="{{progress.id}}" class="progress-update">
+    <ul class="list-group" style="width: 500px; margin-top: 10px; background-color: rgba(61, 40, 40, 0.5)">
+      <li class="list-group-item">Weight:</li>
+      <li class="list-group-item">Calories:</li>
+      <li class="list-group-item">Protein:</li>
+      <li class="list-group-item">Carbohydrate:</li>
+      <li class="list-group-item">Fat:</li>
+      <li class="list-group-item">Sugar:</li>
+      <li class="list-group-item">Fiber:</li>
+      <li class="list-group-item">Cardio:</li>
+
+    </ul>
+    <ul data-id="{{progress.id}}" class="list-group list-group-horizontal" style="width: 125px; margin-top: 10px; background-color: rgba(61, 40, 40, 0.5)">
+<li class="list-group-item">{{progress.weight}}</li>
+<li class="list-group-item">{{progress.calories}}</li>
+<li class="list-group-item">{{progress.protein}}</li>
+<li class="list-group-item">{{progress.carbohydrate}}</li>
+<li class="list-group-item">{{progress.fat}}</li>
+<li class="list-group-item">{{progress.sugar}}</li>
+<li class="list-group-item">{{progress.fiber}}</li>
+<li class="list-group-item">{{progress.cardio}}</li>
+  </ul>
+      <!-- <p class="chill">Weight:{{progress.weight}}</p>
+      <p class="chill">Calories:{{progress.calories}}</p>
+      <p class="chill">Protein:{{progress.protein}}</p>
+      <p class="chill">Carbohydrate:{{progress.carbohydrate}}</p>
+      <p class="chill">Fat:{{progress.fat}}</p>
+      <p class="chill">Sugar:{{progress.sugar}}</p>
+      <p class="chill">Fiber:{{Cardio.fiber}}</p>
+      <p class="chill">Cardio:{{progress.cardio}}</p> -->
+
+      <!-- <form id="update-progress" data-id="{{progress.id}}" class="progress-update">
         <input type="number" placeholder="weight"name="progress[weight]" value="{{progress.weight}}">
         <input type="number" placeholder="calories"name="progress[calories]" value="{{progress.calories}}">
         <input type="number" placeholder="protein"name="progress[protein]" value="{{progress.protein}}">
@@ -38,12 +64,36 @@
         <input type="number" placeholder="fiber"name="progress[fiber]" value="{{progress.fiber}}">
         <input type="number" placeholder="cardio"name="progress[cardio]" value="{{progress.cardio}}">
         <input class="update-button" type="submit" data-id="{{progress.id}}" name="update-button" value="UPDATE THIS SHIT">
-      </form>
+      </form> -->
+      <!-- <div class="handlebar-btn" style="height: 50px;">
+        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        <button type="button" class="btn btn-secondary btn-sm">Small button</button>
 
-      <!-- <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE THIS SHIT</button> -->
-
+      </div> -->
+      <!-- <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE THIS SHIT</button>
+      <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE THIS SHIT</button> -->
 
   </section>
+  <button class="return-button" type="button" data-id="{{progress.id}}" name="delete-button">RETURN</button>
 
+  <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE</button>
+  <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE</button>
+
+
+<!-- <section class="progress" data-id="{{progress.id}}">
+
+  <ul class="list-group" style="width: 500px;">
+    <li class="list-group-item">Weight:{{progress.weight}}</li>
+    <li class="list-group-item">Calories:{{progress.calories}}</li>
+    <li class="list-group-item">Protein:{{progress.protein}}</li>
+    <li class="list-group-item">Carbohydrate:{{progress.carbohydrate}}</li>
+    <li class="list-group-item">Fat:{{progress.fat}}</li>
+    <li class="list-group-item">Sugar:{{progress.sugar}}</li>
+    <li class="list-group-item">Fiber:{{Cardio.fiber}}</li>
+    <li class="list-group-item">Cardio:{{progress.cardio}}</li>
+  </ul>
+  <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE THIS SHIT</button>
+  <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE THIS SHIT</button>
+</section> -->
 
 {{/each}}

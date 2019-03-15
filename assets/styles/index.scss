@@ -1,24 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-image: url('../public/background.jpg');
-  background-size: cover;
+  background: contain;
 }
 
 .main-body {
   display: flex;
-  height: 100vh;
 }
 
-form > p {
+::placeholder {
+  opacity: 1;
+  color: white;
+}
+
+form > p {}
+
+li.list-group-item {
+  background-color: rgba(61, 40, 40, 0.5);
+  height: 50px;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+
 }
 
 .nav-bar {
-  height: 120px;
+  width: 100vw;
+  height: 60px;
   background: #2F4F4F;
-  display: inline;
   font-size: 100px;
-  display: inline;
+  text-align: center;
+  color: white;
+  // position: absolute;
+}
+
+.content-container {
+  height: 92.5vh;
+  width: 50%;
+}
+
+.btn {
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+#main-body {
+  heigh: 100vh;
+}
+
+.form-inline {
+  text-align: center;
 }
 
 .messages {
@@ -36,23 +70,6 @@ form > p {
 }
 
 .input {
-  display: flex;
-  flex-direction: column;
-  width: 10vw;
   color: white;
   font-size: 16px;
-  background-color: blue;
-}
-
-.progress {
-  height: 50px;
-  background-color: blue;
-  font-size: 7px;
-  color: white;
-  font-weight: 700;
-  padding: 5px;
-}
-
-.chill {
-  // padding: 5px;
 }
