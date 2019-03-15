@@ -85,6 +85,7 @@ const submitFailure = function () {
 // }
 const showProgressSuccess = function (responseData) {
   store.progresses = responseData.user.progresses
+  $('#content-progress').show()
   console.log(store.progresses.length)
   const showProgressesHtml = showProgressesTemplate({ progresses: responseData.user.progresses })
   if (store.progresses.length < 1) {
