@@ -14,7 +14,7 @@ const changeBackground = function () {
   ]
 
   const randomNumber = Math.floor(Math.random() * images.length)
-  const bgImg = 'url("../public/' + images[randomNumber] + '")'
+  const bgImg = 'url("public/' + images[randomNumber] + '")'
 
   $('body').css({ 'background': bgImg, 'backgroundSize': 'cover' })
 }
