@@ -110,7 +110,7 @@ const onUpdateProgress = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   const progressId = store.progresses[0].id
-  api.updateProgress(progressId, data.weight, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
+  api.updateProgress(progressId, data.progress.weight, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
     .then(ui.updateProgressSuccess)
     .catch(ui.updateProgressFailure)
 }
