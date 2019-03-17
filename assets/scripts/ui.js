@@ -3,6 +3,24 @@ const showProgressesTemplate = require('./templates/progresses.handlebars')
 const store = (require('./store'))
 const api = require('./api')
 
+const showDate = function () {
+  const n = new Date()
+  const y = n.getFullYear()
+  let m = ''
+  if ((n.getMonth() + 1) < 10) {
+    m = '0' + n.getMonth()
+  } else {
+    m = n.getMonth()
+  }
+  let d = ''
+  if (n.getDate() < 10) {
+    d = '0' + (n.getDate() + 1)
+  } else {
+    d = n.getDate()
+  }
+  $('.btnDate').html(y + '-' + m + '-' + d)
+}
+
 const signUpSuccess = function (responseData) {
   store.user = responseData.user
   $('#messages').text('You Have Successfully Signed Up, Please Sign In')
@@ -18,6 +36,7 @@ const signUpFailure = function () {
 
 const signInSuccess = function (responseData) {
   store.user = responseData.user
+  store.user.token = responseData.user.token
   console.log(store.user)
   $('#signInModalMessages').text('')
   $('form').trigger('reset')
@@ -27,9 +46,11 @@ const signInSuccess = function (responseData) {
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#sign-out').show()
-  $('#contentContainer').show()
   $('#update').hide()
   $('#messages').text('Welcome ' + store.user.email.split('@').slice(0, -1))
+  api.showProgresses()
+    .then(showProgressesSuccess)
+    .catch(showProgressesFailure)
 }
 
 const signInFailure = function () {
@@ -75,14 +96,27 @@ const submitFailure = function () {
   $('#messages').text('Please try submitting again')
 }
 
-// const showProgressesSuccess = function (responseData) {
-//   store.progresses = responseData.progresses
-//   const showProgressesHtml = showProgressesTemplate({ progresses: responseData.progresses })
-//   $('#content-progress').append(showProgressesHtml)
-// }
-// const showProgressesFailure = function () {
-//   $('#messages').text('Please try again')
-// }
+const showProgressesSuccess = function (responseData) {
+  store.progresses = responseData.user.progresses
+  $('#content-progress').show()
+  // const date = $('.btnDate').html()
+  const progresses = store.progresses
+  for (let i = 0; i < progresses.length; i++) {
+    const date = (progresses[i].created_at).split('T')[0]
+    const currentDate = $('.btnDate').html()
+    console.log(currentDate)
+    console.log(date)
+    if (currentDate === date) {
+      $('#contentContainer').hide()
+      const showProgressesHtml = showProgressesTemplate({ progresses: responseData.user.progresses })
+      $('#content-progress').append(showProgressesHtml)
+    }
+  }
+}
+
+const showProgressesFailure = function () {
+  $('#messages').text('Please try again')
+}
 
 // if (store.progresses.length !== 2) {
 //   $('#navMessages').text('only one submit allowed per day')
@@ -99,6 +133,7 @@ const showProgressSuccess = function (responseData) {
   } else {
     $('#contentContainer').hide()
     $('#content-progress').append(showProgressesHtml)
+    showDate()
   }
 }
 

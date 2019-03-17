@@ -62,15 +62,15 @@ const submit = function (weight, calories, protein, carbohydrate, fat, sugar, fi
   })
 }
 
-// const showProgresses = function () {
-//   return $.ajax({
-//     url: config.apiUrl + '/progresses',
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const showProgresses = function () {
+  return $.ajax({
+    url: config.apiUrl + '/users/' + store.user.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 const showProgress = function () {
   return $.ajax({
@@ -120,7 +120,7 @@ module.exports = {
   changePassword,
   signOut,
   submit,
-  // showProgresses,
+  showProgresses,
   showProgress,
   deleteProgress,
   updateProgress

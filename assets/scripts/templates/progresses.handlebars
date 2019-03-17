@@ -3,24 +3,24 @@
   <!-- Don't uncomment yet -->
 
 
-  <div style="display: flex; justify-content: center; margin: 15px;">
-    <div id="btnLefArrow" style="font-size: 28px; color: white; padding-right: 75px;">&#8592;</div>
-    <div id="btnDate" style="font-size: 28px; color: white; width: 150px; text-align: center;">DATE</div>
-    <div id="btnRightArrow" style="font-size: 28px; color: white; padding-left: 75px;">&#8594;</div>
+  <div style="display: flex; justify-content: center; background-color: rgba(61, 40, 40, 0.5); padding: 15">
+    <button type="submit" id="btnLefArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button>
+    <button type="submit" class="btnDate" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); font-size: 28px; color: white; width: 150px; text-align: center;">DATE</button>
+    <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button>
   </div>
 
   <section class="progress" data-id="{{progress.id}}" style="display: flex; justify-content: center; width: 498px; height: 500px; background-color: rgba(61, 40, 40, 0.5)">
 
 
     <ul class="list-group" style="width: 500px; margin-top: 10px; background-color: rgba(61, 40, 40, 0)">
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Weight:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Calories:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Protein:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Carbohydrate:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Fat:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Sugar:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Fiber:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center;" class="list-group-item">Cardio:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Weight:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Calories:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Protein:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Carbohydrate:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Fat:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Sugar:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Fiber:</li>
+      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Cardio:</li>
 
     </ul>
     <ul data-id="{{progress.id}}" class="list-group list-group-horizontal" style="width: 125px; margin-top: 10px; background-color: rgba(61, 40, 40, 0)">

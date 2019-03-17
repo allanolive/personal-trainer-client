@@ -15,6 +15,7 @@ const updateForm = function () {
   $('#contentContainer').hide()
   // $('#submit').hide()
   $('#update').show()
+  showDate()
 }
 
 const onModalFade = function () {
@@ -38,9 +39,19 @@ const changeBackground = function () {
 const showDate = function () {
   const n = new Date()
   const y = n.getFullYear()
-  const m = n.getMonth() + 1
-  const d = n.getDate()
-  $('#btnDate').html(m + '/' + d + '/' + y)
+  let m = ''
+  if ((n.getMonth() + 1) < 10) {
+    m = '0' + (n.getMonth() + 1)
+  } else {
+    m = n.getMonth()
+  }
+  let d = ''
+  if (n.getDate() < 10) {
+    d = '0' + n.getDate()
+  } else {
+    d = n.getDate()
+  }
+  $('.btnDate').html(y + '-' + m + '-' + d)
 }
 
 const onSignUp = function (event) {
@@ -83,12 +94,12 @@ const onSubmit = function () {
     .catch(ui.submitSuccess)
 }
 
-// const onShowProgresses = function (event) {
-//   event.preventDefault()
-//   api.showProgresses()
-//     .then(ui.showProgressesSuccess)
-//     .catch(ui.showProgressesFailure)
-// }
+const onShowProgresses = function () {
+  event.preventDefault()
+  api.showProgresses()
+    .then(ui.showProgressesSuccess)
+    .catch(ui.showProgressesFailure)
+}
 
 const onShowProgress = function (event) {
   event.preventDefault()
@@ -121,7 +132,7 @@ module.exports = {
   onSignOut,
   onChangePassword,
   onSubmit,
-  // onShowProgresses,
+  onShowProgresses,
   onShowProgress,
   onDeleteProgress,
   onUpdateProgress,
