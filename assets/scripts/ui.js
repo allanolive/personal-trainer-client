@@ -1,24 +1,26 @@
 'use strict'
 const showProgressesTemplate = require('./templates/progresses.handlebars')
 const store = (require('./store'))
+const api = require('./api')
 
 const signUpSuccess = function (responseData) {
   store.user = responseData.user
   $('#messages').text('You Have Successfully Signed Up, Please Sign In')
   $('form').trigger('reset')
+  $('#signUpModalMessages').text('')
   $('#signUpModal').modal('hide')
 }
 
 const signUpFailure = function () {
-  $('#messages').text('Error on sign up')
+  $('#signUpModalMessages').text('PLEASE TRY AGAIN')
   $('form').trigger('reset')
 }
 
 const signInSuccess = function (responseData) {
   store.user = responseData.user
-  console.log(store.user.email)
+  console.log(store.user)
+  $('#signInModalMessages').text('')
   $('form').trigger('reset')
-  $('#messages').text('Successfully Signed In')
   $('#signInModal').modal('hide')
   $('#change-password').show()
   $('#navMessages').show()
@@ -26,11 +28,12 @@ const signInSuccess = function (responseData) {
   $('#sign-up').hide()
   $('#sign-out').show()
   $('#contentContainer').show()
-  $('#navMessages').text('Welcome ' + store.user.email.split('@').slice(0, -1))
+  $('#update').hide()
+  $('#messages').text('Welcome ' + store.user.email.split('@').slice(0, -1))
 }
 
 const signInFailure = function () {
-  $('#modalMessages').text('TRY AGAIN')
+  $('#signInModalMessages').text('PLEASE TRY AGAIN')
   $('form').trigger('reset')
   $('#messages').show()
 }
@@ -42,8 +45,8 @@ const changePasswordSuccess = function () {
 }
 
 const changePasswordFailure = function () {
-  $('#modalMessages').text('TRY AGAIN')
   $('form').trigger('reset')
+  $('#navMessages').text('please try again')
 }
 
 const signOutSuccess = function () {
@@ -63,6 +66,9 @@ const signOutFailure = function () {
 const submitSuccess = function (responseData) {
   $('#messages').text('you have submitted your progress')
   $('form').trigger('reset')
+  api.showProgress()
+    .then(showProgressSuccess)
+    .catch(showProgressFailure)
 }
 
 const submitFailure = function () {
@@ -101,8 +107,8 @@ const showProgressFailure = function () {
 }
 
 const deleteProgressSuccess = function () {
-  console.log('button works')
-  $('#content-progress').hide()
+  $('#content-progress').html('')
+  // $('#content-progress').hide()
   $('#messages').html('deleted progress successfully')
   $('#contentContainer').show()
 }
@@ -114,6 +120,11 @@ const deleteProgressFailure = function () {
 const updateProgressSuccess = function () {
   console.log('button works')
   $('#messages').html('deleted progress successfully')
+  $('form').trigger('reset')
+  api.showProgress()
+    .then(showProgressSuccess)
+    .catch(showProgressFailure)
+  $('#main-body-update').hide()
 }
 
 const updateProgressFailure = function () {

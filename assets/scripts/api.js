@@ -92,7 +92,7 @@ const deleteProgress = function (id) {
   })
 }
 
-const updateProgress = function (data, id, weight, calories, protein, carbohydrate, fat, sugar, fiber, cardio) {
+const updateProgress = function (id, weight, calories, protein, carbohydrate, fat, sugar, fiber, cardio) {
   return $.ajax({
     url: config.apiUrl + '/progresses/' + id,
     method: 'PATCH',

@@ -8,6 +8,10 @@ body {
   display: flex;
 }
 
+button:focus {
+  outline: 0;
+}
+
 ::placeholder {
   opacity: 1;
   color: white;

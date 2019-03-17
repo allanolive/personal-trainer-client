@@ -5,6 +5,22 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./store')
 
+const updateForm = function () {
+  // $('#content-progress').hide()
+  // $('#main-body').hide()
+  // $('#main-body-update').show()
+  $('#content-progress').html('')
+  $('#content-progress').hide()
+  $('#main-body-update').show() // 1
+  $('#contentContainer').hide()
+  // $('#submit').hide()
+  $('#update').show()
+}
+
+const onModalFade = function () {
+  $(this).find('.modal-messages').text('')
+}
+
 const changeBackground = function () {
   const images = [
     'images/001.jpg',
@@ -62,7 +78,6 @@ const onChangePassword = function (event) {
 const onSubmit = function () {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(store)
   api.submit(data.progress.weight, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
     .then(ui.submitSuccess)
     .catch(ui.submitSuccess)
@@ -84,6 +99,7 @@ const onShowProgress = function (event) {
 
 const onDeleteProgress = function (event) {
   const progressId = $(event.target).data('id')
+  console.log(progressId)
   event.preventDefault()
   api.deleteProgress(progressId)
     .then(ui.deleteProgressSuccess)
@@ -93,11 +109,10 @@ const onDeleteProgress = function (event) {
 const onUpdateProgress = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  const progressId = $(event.target).data('id')
-  console.log(data)
-  api.updateProgress(data.weight, progressId, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
-    .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
+  const progressId = store.progresses[0].id
+  api.updateProgress(progressId, data.weight, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
+    .then(ui.updateProgressSuccess)
+    .catch(ui.updateProgressFailure)
 }
 
 module.exports = {
@@ -111,5 +126,7 @@ module.exports = {
   onDeleteProgress,
   onUpdateProgress,
   changeBackground,
-  showDate
+  showDate,
+  onModalFade,
+  updateForm
 }
