@@ -114,6 +114,16 @@ const updateProgress = function (id, weight, calories, protein, carbohydrate, fa
   })
 }
 
+const getPreviousProgress = function (progressId) {
+  return $.ajax({
+    url: config.apiUrl + '/progresses/' + progressId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -123,5 +133,6 @@ module.exports = {
   showProgresses,
   showProgress,
   deleteProgress,
-  updateProgress
+  updateProgress,
+  getPreviousProgress
 }

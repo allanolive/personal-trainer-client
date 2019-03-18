@@ -40,14 +40,18 @@ const showDate = function () {
   const n = new Date()
   const y = n.getFullYear()
   let m = ''
-  if ((n.getMonth() + 1) < 10) {
-    m = '0' + (n.getMonth() + 1)
+  const num = 1
+  const month = parseInt(n.getMonth())
+  const currentMonth = (month + num).toString()
+  console.log(0 + currentMonth)
+  if ((currentMonth) < 10) {
+    m = '0' + currentMonth
   } else {
-    m = n.getMonth()
+    m = currentMonth
   }
   let d = ''
   if (n.getDate() < 10) {
-    d = '0' + n.getDate()
+    d = '0' + n.getDate() + 1
   } else {
     d = n.getDate()
   }
@@ -89,6 +93,7 @@ const onChangePassword = function (event) {
 const onSubmit = function () {
   event.preventDefault()
   const data = getFormFields(this)
+  console.log(store)
   api.submit(data.progress.weight, data.progress.calories, data.progress.protein, data.progress.carbohydrate, data.progress.fat, data.progress.sugar, data.progress.fiber, data.progress.cardio)
     .then(ui.submitSuccess)
     .catch(ui.submitSuccess)
@@ -126,6 +131,15 @@ const onUpdateProgress = function (event) {
     .catch(ui.updateProgressFailure)
 }
 
+const onGetPreviousProgress = function () {
+  event.preventDefault()
+  const prog = store.progresses
+  const progressId = prog[0].id
+  api.getPreviousProgress(progressId)
+    .then(ui.getPreviousProgressSuccess)
+    .catch(ui.getPreviousProgressSuccess)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -139,5 +153,6 @@ module.exports = {
   changeBackground,
   showDate,
   onModalFade,
-  updateForm
+  updateForm,
+  onGetPreviousProgress
 }

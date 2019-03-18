@@ -18,6 +18,7 @@ $(() => {
   // $('.fade').on('hidden.bs.modal', function () {
   //   $(this).find('.modal-messages').text('')
   // })
+  $('body').on('click', '.btn-left-arrow', events.onGetPreviousProgress)
   $('body').on('submit', '#btn-sign-up', events.onSignUp)
   $('body').on('submit', '#btn-sign-in', events.onSignIn)
   $('#btn-change-password').on('submit', events.onChangePassword)

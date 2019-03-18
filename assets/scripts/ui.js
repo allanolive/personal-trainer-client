@@ -7,14 +7,18 @@ const showDate = function () {
   const n = new Date()
   const y = n.getFullYear()
   let m = ''
-  if ((n.getMonth() + 1) < 10) {
-    m = '0' + n.getMonth()
+  const num = 1
+  const month = parseInt(n.getMonth())
+  const currentMonth = (month + num).toString()
+  console.log(0 + currentMonth)
+  if ((currentMonth) < 10) {
+    m = '0' + currentMonth
   } else {
-    m = n.getMonth()
+    m = currentMonth
   }
   let d = ''
   if (n.getDate() < 10) {
-    d = '0' + (n.getDate() + 1)
+    d = '0' + n.getDate() + 1
   } else {
     d = n.getDate()
   }
@@ -43,6 +47,7 @@ const signInSuccess = function (responseData) {
   $('#signInModal').modal('hide')
   $('#change-password').show()
   $('#navMessages').show()
+  // $('#contentContainer').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#sign-out').show()
@@ -79,6 +84,7 @@ const signOutSuccess = function () {
   $('#sign-in').show()
   $('#sign-up').show()
   $('#navMessages').hide()
+  $('#contentContainerUpdate').hide()
 }
 
 const signOutFailure = function () {
@@ -87,9 +93,13 @@ const signOutFailure = function () {
 const submitSuccess = function (responseData) {
   $('#messages').text('you have submitted your progress')
   $('form').trigger('reset')
-  api.showProgress()
-    .then(showProgressSuccess)
-    .catch(showProgressFailure)
+  if (store.progresses.length > 1) {
+    $('#messages').text('Already Submitted Today')
+  } else {
+    api.showProgress()
+      .then(showProgressSuccess)
+      .catch(showProgressFailure)
+  }
 }
 
 const submitFailure = function () {
@@ -98,18 +108,25 @@ const submitFailure = function () {
 
 const showProgressesSuccess = function (responseData) {
   store.progresses = responseData.user.progresses
-  $('#content-progress').show()
+  // showDate()
+  // $('#content-progress').show()
   // const date = $('.btnDate').html()
   const progresses = store.progresses
   for (let i = 0; i < progresses.length; i++) {
     const date = (progresses[i].created_at).split('T')[0]
     const currentDate = $('.btnDate').html()
     console.log(currentDate)
-    console.log(date)
+    console.log(progresses.length)
     if (currentDate === date) {
       $('#contentContainer').hide()
+      $('#content-progress').show()
+      showDate()
       const showProgressesHtml = showProgressesTemplate({ progresses: responseData.user.progresses })
       $('#content-progress').append(showProgressesHtml)
+    } else {
+      // $('#content-progress').show()
+      // $('#main-body').show()
+      $('#contentContainer').show()
     }
   }
 }
@@ -166,6 +183,21 @@ const updateProgressFailure = function () {
   $('#messages').html('delete not successful')
 }
 
+const getPreviousProgressSuccess = function (responseData) {
+  console.log('Previous Button worked')
+  console.log(responseData)
+  store.progress = responseData.progress
+  const currentProgress = store.progress.id
+  console.log(currentProgress)
+  const showProgressesHtml = showProgressesTemplate({ progresses: responseData.progress.id })
+  $('#contentContainer').hide()
+  $('#content-progress').append(showProgressesHtml)
+  $('#content-progress').show()
+}
+
+const getPreviousProgressFailure = function () {
+  $('#messages').html('delete not successful')
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -175,8 +207,8 @@ module.exports = {
   signOutFailure,
   submitSuccess,
   submitFailure,
-  // showProgressesSuccess,
-  // showProgressesFailure,
+  showProgressesSuccess,
+  showProgressesFailure,
   showProgressSuccess,
   showProgressFailure,
   deleteProgressSuccess,
@@ -184,5 +216,7 @@ module.exports = {
   updateProgressFailure,
   updateProgressSuccess,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  getPreviousProgressSuccess,
+  getPreviousProgressFailure
 }
