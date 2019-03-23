@@ -15,7 +15,7 @@ $(() => {
   $('#content-progress.progress-update').hide()
   functions.changeBackground()
   functions.showDate()
-  $('.fade').on('hidden.bs.modal', events.onModalFade)
+  $('.fade').on('hidden.bs.modal', functions.onModalFade)
   $('body').on('submit', '#btn-sign-up', events.onSignUp)
   $('body').on('submit', '#btn-sign-in', events.onSignIn)
   $('#btn-change-password').on('submit', events.onChangePassword)
