@@ -4,40 +4,39 @@
 
 
   <div style="display: flex; justify-content: center; background-color: rgba(61, 40, 40, 0.5); padding: 15">
-    <button type="submit" class="btn-left-arrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button>
-    <button type="submit" class="btnDate" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); font-size: 28px; color: white; width: 200px; text-align: center;">DATE</button>
-    <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button>
+    <!-- <button type="submit" class="btn-left-arrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button> -->
+    <button type="submit" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); font-size: 28px; color: white; width: 200px; text-align: center;">progress id: {{progress.id}}</button>
+    <!-- <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button> -->
   </div>
 
   <section class="progress" data-id="{{progress.id}}" style="display: flex; justify-content: center; width: 498px; height: 500px; background-color: rgba(61, 40, 40, 0.5)">
+      <ul class="list-group" style="width: 500px; margin-top: 10px; background-color: rgba(61, 40, 40, 0)">
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Weight:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Calories:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Protein:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Carbohydrate:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Fat:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Sugar:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Fiber:</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Cardio:</li>
+      </ul>
 
-
-    <ul class="list-group" style="width: 500px; margin-top: 10px; background-color: rgba(61, 40, 40, 0)">
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Weight:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Calories:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Protein:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Carbohydrate:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Fat:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Sugar:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Fiber:</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; padding-left: 50px;" class="list-group-item"> Today's Cardio:</li>
-
+      <ul data-id="{{progress.id}}" class="list-group list-group-horizontal" style="width: 125px; margin-top: 10px; background-color: rgba(61, 40, 40, 0)">
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.weight}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.calories}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.protein}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.carbohydrate}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.fat}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.sugar}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.fiber}}</li>
+        <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.cardio}}</li>
     </ul>
-    <ul data-id="{{progress.id}}" class="list-group list-group-horizontal" style="width: 125px; margin-top: 10px; background-color: rgba(61, 40, 40, 0)">
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.weight}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.calories}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.protein}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.carbohydrate}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.fat}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.sugar}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.fiber}}</li>
-      <li style="background-color: rgba(61, 40, 40, 0); border: 1px solid white; text-align: center; "class="list-group-item">{{progress.cardio}}</li>
-  </ul>
-
   </section>
 
-  <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE</button>
-  <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE</button>
-
+  <div class="handlebar-buttons" style="position: relative; left: 20%">
+    <button class="delete-button" type="button" data-id="{{progress.id}}" name="delete-button">DELETE</button>
+    <button class="update-button" type="button" data-id="{{progress.id}}" name="update-button">UPDATE</button>
+    <button class="new-progress-button" type="button" data-id="{{progress.id}}" name="delete-button">NEW PROGRESS</button>
+  </div>
 
 {{/each}}

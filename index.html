@@ -21,7 +21,7 @@
     <button type="button" id="sign-out" class="btn btn-primary" data-toggle="modal" data-target="#signOutModal" data-whatever="@mdo" style="margin: 7px; WIDTH: 180px; background-color: rgba(61, 40, 40, 0.6); border: none;">SIGN OUT</button>
     <button type="button" id="change-password" class="btn btn-primary" data-toggle="modal" data-target="#changePasswordModal" data-whatever="@fat" style="margin: 7px; WIDTH: 180px; background-color: rgba(61, 40, 40, 0.6); border: none;">CHANGE
       PASSWORD</button>
-    <div id="navMessages" style="position: absolute; right: 15px; margin-top: 10px; font-size: 20px; color: white;"></div>
+    <div id="navMessages" style="font-weight: 700; width: 500px; height: 40px; position: relative; right: -15%; margin-top: 5px; font-size: 26px; color: white;"></div>
   </nav>
   <!-- Sign Up Modal -->
   <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -29,7 +29,7 @@
       <div class="modal-content" style="margin-top: 50px; background-color: rgba(61, 40, 40, 0.8)">
         <div class="modal-header" style="color: white;">
           <h3 class="modal-title" id="exampleModalLabel">SIGN UP</h3>
-          <div class="modal-messages" id="signUpModalMessages" style="position: relative; left: 25px; font-size: 20px; color: red;"></div>
+          <div class="modal-messages" id="signUpModalMessages" style="position: relative; left: 50px; font-weight: 700; font-size: 26px; color: red;"></div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="font-size: 30px; color: white;">&times;</span>
           </button>
@@ -66,7 +66,7 @@
       <div class="modal-content" style="margin-top: 50px; background-color: rgba(61, 40, 40, 0.8)">
         <div class="modal-header" style="color: white;">
           <h3 class="modal-title" id="exampleModalLabel">SIGN IN</h3>
-          <div id="signInModalMessages" class="modal-messages" style="position: relative; left: 85px; font-size: 22px; color: red;"></div>
+          <div id="signInModalMessages" class="modal-messages" style="position: relative; left: 60px; font-weight: 700; font-size: 26px; color: red;"></div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="font-size: 30px; color: white;">&times;</span>
           </button>
@@ -97,7 +97,7 @@
       <div class="modal-content" style="margin-top: 50px; background-color: rgba(61, 40, 40, 0.8)">
         <div class="modal-header" style="color: white;">
           <h3 class="modal-title" id="exampleModalLabel">CHANGE PASSWORD</h3>
-          <div id="changePasswordModalMessages" class="modal-messages" style="position: relative; left: 25px; font-size: 20px; color: red;"></div>
+          <div id="changePasswordModalMessages" class="modal-messages" style="position: relative; left: 60px; font-weight: 700; font-size: 26px; color: red;"></div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="font-size: 30px; color: white;">&times;</span>
           </button>
@@ -122,21 +122,21 @@
       </div>
     </div>
   </div>
-
+  <h1 style="text-align: center; margin-top: 10px; font-size: 80px; color: white;">~Kai Fitness Tracker~</h1>
   <div id="main-body" class="main-body justify-content-center">
 
     <div id="content-progress" class="" style=""></div>
 
     <div id="contentContainer" class="content-container" style="background-color: rgba(61, 40, 40, 0.5)">
       <div style="display: flex; justify-content: center;">
-        <button type="submit" class="btn-left-arrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button>
+        <!-- <button type="submit" class="btn-left-arrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button> -->
         <button type="submit" class="btnDate" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); font-size: 28px; color: white; width: 200  px; text-align: center;">DATE</button>
-        <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button>
+        <!-- <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button> -->
       </div>
 
 
 
-      <p class="messages" id="messages"></p>
+      <p class="messages" id="messages" style="font-size: 26px; position: relative; bottom: 15px;"></p>
 
 
       <form id="input" class="input text-center d-flex justify-content-center">
@@ -147,66 +147,65 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="weight" style="width: 100px;">Weight</span>
             </div>
-            <input name="progress[weight]" type="number" class="form-control">
+            <input name="progress[weight]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="calories" style="width: 100px;">Calories</span>
             </div>
-            <input name="progress[calories]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[calories]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="protein" style="width: 100px;">Protein</span>
             </div>
-            <input name="progress[protein]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[protein]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="carbs" style="width: 100px;">Carbs</span>
             </div>
-            <input name="progress[carbohydrate]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[carbohydrate]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="fat" style="width: 100px;">Fat</span>
             </div>
-            <input name="progress[fat]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[fat]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="sugar" style="width: 100px;">Sugar</span>
             </div>
-            <input name="progress[sugar]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[sugar]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="fiber" style="width: 100px;">Fiber</span>
             </div>
-            <input name="progress[fiber]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[fiber]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="cardio" style="width: 100px;">Cardio</span>
             </div>
-            <input name="progress[cardio]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[cardio]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
-          <input id="submit" type="submit" value="Submit!">
+          <input id="submit" type="submit" value="Submit!" style="height: 30px;width: 292px; font-weight: 500;">
+          <button id="show-progress-button" class="show-progress" style="height: 30px;width: 292px; align-items: center; margin-top: 15px; font-weight: 500;">Show Progresses</button>
 
         </div>
 
       </form>
 
-      <button id="show-progress" style="margin-top: 15px;">Show Progress</button>
-      <!-- <button id="show-progresses" style="margin-top: 15px;">Show Progresses</button> -->
 
 
 
@@ -220,14 +219,14 @@
 
     <div id="contentContainerUpdate" class="content-container" style="background-color: rgba(61, 40, 40, 0.5)">
       <div style="display: flex; justify-content: center;">
-        <button type="submit" class="btn-left-arrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button>
+        <!-- <button type="submit" class="btn-left-arrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; margin-right: 20px; font-size: 28px; color: white; text-align: center;">&#8592;</button> -->
         <button type="submit" class="btnDate" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); font-size: 28px; color: white; width: 200px; text-align: center;">DATE</button>
-        <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button>
+        <!-- <button id="btnRightArrow" style="cursor: pointer; border: none; background-color: rgba(61, 40, 40, 0); width: 40px; font-size: 28px; color: white; margin-left: 20px; text-align: center;">&#8594;</button> -->
       </div>
 
 
 
-      <p class="messages" id="messages-update"></p>
+      <p class="messages" id="messages-update" style="font-size: 26px; position: relative; bottom: 15px;"></p>
 
 
       <form id="input-update" class="input text-center d-flex justify-content-center">
@@ -238,68 +237,66 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="weight-update" style="width: 100px;">Weight</span>
             </div>
-            <input name="progress[weight]" type="number" class="form-control">
+            <input placeholder="enter weight" name="progress[weight]" type="number" step="0.1" min="0" class="form-control">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="calories-update" style="width: 100px;">Calories</span>
             </div>
-            <input name="progress[calories]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[calories]" placeholder="enter intake" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="protein-update" style="width: 100px;">Protein</span>
             </div>
-            <input name="progress[protein]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[protein]" placeholder="enter grams" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="carbs-update" style="width: 100px;">Carbs</span>
             </div>
-            <input name="progress[carbohydrate]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[carbohydrate]" placeholder="enter grams" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="fat-update" style="width: 100px;">Fat</span>
             </div>
-            <input name="progress[fat]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[fat]" placeholder="enter grams" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="sugar-update" style="width: 100px;">Sugar</span>
             </div>
-            <input name="progress[sugar]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[sugar]" placeholder="enter grams" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="fiber-update" style="width: 100px;">Fiber</span>
             </div>
-            <input name="progress[fiber]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[fiber]" placeholder="enter grams" type="number" class="form-control" step="0.1" min="0">
           </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="cardio-update" style="width: 100px;">Cardio</span>
             </div>
-            <input name="progress[cardio]" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input name="progress[cardio]" placeholder="enter calories" type="number" class="form-control" step="0.1" min="0">
           </div>
 
-          <input id="update" type="submit" value="Update!">
+          <input id="update" type="submit" value="Update!" style="height: 30px; font-weight: 500;">
 
         </div>
 
       </form>
 
-      <button id="show-progress" style="margin-top: 15px;">Show Progress</button>
-      <!-- <button id="show-progresses" style="margin-top: 15px;">Show Progresses</button> -->
-
-
+      <button id="show-progress" class="btns show-progress identifier" style="width: 146px; margin-top: 15px 0 0 0;padding: 0; height: 30px; font-weight: 500;">Show Progresses</button>
+      <button id="cancel-update" class="btns cancel-update" style="width: 146px; height: 30px; font-weight: 500; margin: 15px 0 0 0; padding: 0;">Cancel Update</button>
 
     </div>
   </div>

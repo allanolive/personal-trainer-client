@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background: contain;
+  background-repeat: no-repeat;
 }
 
 .main-body {
@@ -39,8 +39,8 @@ li.list-group-item {
 }
 
 .content-container {
-  height: 92.5vh;
-  width: 50%;
+  height: 77vh;
+  width: 36%;
 }
 
 .btn {

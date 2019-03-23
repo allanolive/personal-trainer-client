@@ -1,203 +1,130 @@
 'use strict'
 const showProgressesTemplate = require('./templates/progresses.handlebars')
 const store = (require('./store'))
-const api = require('./api')
-
-const showDate = function () {
-  const n = new Date()
-  const y = n.getFullYear()
-  let m = ''
-  const num = 1
-  const month = parseInt(n.getMonth())
-  const currentMonth = (month + num).toString()
-  console.log(0 + currentMonth)
-  if ((currentMonth) < 10) {
-    m = '0' + currentMonth
-  } else {
-    m = currentMonth
-  }
-  let d = ''
-  if (n.getDate() < 10) {
-    d = '0' + n.getDate() + 1
-  } else {
-    d = n.getDate()
-  }
-  $('.btnDate').html(y + '-' + m + '-' + d)
-}
+const visibility = require('./visibility')
+const functions = require('./helper-functions')
 
 const signUpSuccess = function (responseData) {
   store.user = responseData.user
-  $('#messages').text('You Have Successfully Signed Up, Please Sign In')
-  $('form').trigger('reset')
-  $('#signUpModalMessages').text('')
-  $('#signUpModal').modal('hide')
+  $('#navMessages').html('Signed Up, Please Sign In')
+  setTimeout(() => { $('#navMessages').html('') }, 3500)
+  visibility.signUpSuccess()
 }
 
 const signUpFailure = function () {
   $('#signUpModalMessages').text('PLEASE TRY AGAIN')
+  setTimeout(() => { $('#signUpModalMessages').html('') }, 3000)
   $('form').trigger('reset')
 }
 
 const signInSuccess = function (responseData) {
   store.user = responseData.user
-  store.user.token = responseData.user.token
-  console.log(store.user)
-  $('#signInModalMessages').text('')
-  $('form').trigger('reset')
-  $('#signInModal').modal('hide')
-  $('#change-password').show()
-  $('#navMessages').show()
-  // $('#contentContainer').show()
-  $('#sign-in').hide()
-  $('#sign-up').hide()
-  $('#sign-out').show()
-  $('#update').hide()
-  $('#messages').text('Welcome ' + store.user.email.split('@').slice(0, -1))
-  api.showProgresses()
-    .then(showProgressesSuccess)
-    .catch(showProgressesFailure)
+  store.inputUpdateID = []
+  const user = store.user.email.split('@').slice(0, -1).toString().toUpperCase()
+  $('#messages').text('welcome: ' + user)
+  visibility.signInSuccess()
 }
 
-const signInFailure = function () {
-  $('#signInModalMessages').text('PLEASE TRY AGAIN')
+const signInFailure = () => {
+  $('#signInModalMessages').html('PLEASE TRY AGAIN')
+  setTimeout(() => { $('#signInModalMessages').html('') }, 2000)
   $('form').trigger('reset')
-  $('#messages').show()
+  // $('#messages').show()
 }
 
 const changePasswordSuccess = function () {
-  $('#changePasswordModal').modal('hide')
-  $('form').trigger('reset')
-  $('#messages').html('you changed your password')
+  $('#navMessages').html('Change Password Success')
+  setTimeout(() => { $('#navMessages').html('') }, 3000)
+  visibility.changePasswordSuccess()
 }
 
 const changePasswordFailure = function () {
+  $('#changePasswordModalMessages').text('ERROR')
+  setTimeout(() => { $('#changePasswordModalMessages').html('') }, 3000)
   $('form').trigger('reset')
-  $('#navMessages').text('please try again')
 }
 
 const signOutSuccess = function () {
-  $('#messages').html('You Are Now Signed Out')
-  $('#contentContainer').hide()
-  $('#content-progress').hide()
-  $('#sign-out').hide()
-  $('#change-password').hide()
-  $('#sign-in').show()
-  $('#sign-up').show()
-  $('#navMessages').hide()
-  $('#contentContainerUpdate').hide()
+  store.inputUpdateID = []
+  $('#navMessages').html('You Are Now Signed Out')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
+  visibility.signOutSuccess()
 }
 
 const signOutFailure = function () {
-  $('#messages').text('Error on sign out')
+  $('#navMessages').text('Error on sign out')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
 }
+
 const submitSuccess = function (responseData) {
-  $('#messages').text('you have submitted your progress')
+  // $('.messages').html('')
   $('form').trigger('reset')
-  if (store.progresses.length > 1) {
-    $('#messages').text('Already Submitted Today')
-  } else {
-    api.showProgress()
-      .then(showProgressSuccess)
-      .catch(showProgressFailure)
-  }
+  $('#navMessages').text('you have submitted your progress')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
 }
 
 const submitFailure = function () {
-  $('#messages').text('Please try submitting again')
+  $('#navMessages').text('Please try submitting again')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
 }
 
 const showProgressesSuccess = function (responseData) {
   store.progresses = responseData.user.progresses
-  // showDate()
-  // $('#content-progress').show()
-  // const date = $('.btnDate').html()
-  const progresses = store.progresses
-  for (let i = 0; i < progresses.length; i++) {
-    const date = (progresses[i].created_at).split('T')[0]
-    const currentDate = $('.btnDate').html()
-    console.log(currentDate)
-    console.log(progresses.length)
-    if (currentDate === date) {
-      $('#contentContainer').hide()
-      $('#content-progress').show()
-      showDate()
-      const showProgressesHtml = showProgressesTemplate({ progresses: responseData.user.progresses })
-      $('#content-progress').append(showProgressesHtml)
-    } else {
-      // $('#content-progress').show()
-      // $('#main-body').show()
-      $('#contentContainer').show()
-    }
-  }
+  visibility.showProgressSuccess()
+  const showProgressesHtml = showProgressesTemplate({ progresses: responseData.user.progresses })
+  $('#content-progress').append(showProgressesHtml)
 }
 
 const showProgressesFailure = function () {
-  $('#messages').text('Please try again')
+  $('#navMessages').text('Please try again')
 }
 
-// if (store.progresses.length !== 2) {
-//   $('#navMessages').text('only one submit allowed per day')
-// } else {
-//   $('#content-progress').append(showProgressesHtml)
-// }
 const showProgressSuccess = function (responseData) {
   store.progresses = responseData.user.progresses
   $('#content-progress').show()
-  console.log(store.progresses.length)
   const showProgressesHtml = showProgressesTemplate({ progresses: responseData.user.progresses })
   if (store.progresses.length < 1) {
-    $('#messages').text('no progress to show')
+    $('#navMessages').text('No Progresses To Show')
+    setTimeout(() => { $('#navMessages').html('') }, 2000)
   } else {
+    $('#main-body-update').hide()
     $('#contentContainer').hide()
     $('#content-progress').append(showProgressesHtml)
-    showDate()
+    functions.showDate()
   }
 }
 
 const showProgressFailure = function () {
-  $('#messages').text('Please try again')
+  $('#navMessages').text('Please try again')
 }
 
 const deleteProgressSuccess = function () {
   $('#content-progress').html('')
-  // $('#content-progress').hide()
-  $('#messages').html('deleted progress successfully')
+  $('#navMessages').html('')
+  $('#navMessages').html('deleted progress successfully')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
   $('#contentContainer').show()
 }
 
 const deleteProgressFailure = function () {
-  $('#messages').html('delete not successful')
+  $('#navMessages').html('delete not successful')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
 }
 
-const updateProgressSuccess = function () {
-  console.log('button works')
-  $('#messages').html('deleted progress successfully')
+const updateProgressSuccess = function (responseData) {
+  store.progress = responseData.progress
+  $('#navMessages').html('updated progress successfully')
+  setTimeout(() => { $('#navMessages').html('') }, 2000)
   $('form').trigger('reset')
-  api.showProgress()
-    .then(showProgressSuccess)
-    .catch(showProgressFailure)
+  const updateProgressesHtml = showProgressesTemplate({ progress: responseData.progress })
+  $('#content-progress').append(updateProgressesHtml)
   $('#main-body-update').hide()
 }
 
 const updateProgressFailure = function () {
-  $('#messages').html('delete not successful')
+  $('#navMessages').html('delete not successful')
 }
 
-const getPreviousProgressSuccess = function (responseData) {
-  console.log('Previous Button worked')
-  console.log(responseData)
-  store.progress = responseData.progress
-  const currentProgress = store.progress.id
-  console.log(currentProgress)
-  const showProgressesHtml = showProgressesTemplate({ progresses: responseData.progress.id })
-  $('#contentContainer').hide()
-  $('#content-progress').append(showProgressesHtml)
-  $('#content-progress').show()
-}
-
-const getPreviousProgressFailure = function () {
-  $('#messages').html('delete not successful')
-}
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -216,7 +143,5 @@ module.exports = {
   updateProgressFailure,
   updateProgressSuccess,
   changePasswordSuccess,
-  changePasswordFailure,
-  getPreviousProgressSuccess,
-  getPreviousProgressFailure
+  changePasswordFailure
 }
