@@ -52,7 +52,7 @@ const signOutSuccess = () => {
   $('#change-password').hide()
   $('#contentContainerUpdate').hide()
   $('#contentContainer').hide()
-  $('#content-progress').hide()
+  $('#content-progress').html('') // try this
   $('#sign-in').show()
   $('#sign-up').show()
 }
